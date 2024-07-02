@@ -40,8 +40,9 @@ Résultats de 558 circonscriptions françaises, données manquantes pour les 11 
 | REG                                                              | divers                                                             |
 
 ## Données mises à disposition :
-- liste de chacun·e des candidat·es avec ses résultats, sa position au 1er tour, ainsi que les chiffres généraux de la circonscription
-- la même liste, avec les géométries de chaque circonscription
+- résultats du 1er tour des élections législatives, circonscription par circonscription (fichiers géographiques)
+- résultats du 1er tour des élections législatives, candidat·e par candidat·e (un fichier géographique, un fichier CSV)
+- statistiques générales de la répartition genrée des candidatures et résultats
 
 ## Chiffres-clefs :
 
