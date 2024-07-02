@@ -5,14 +5,14 @@
 -- Les statistiques sur le sexe/genre des candidat·es se fondent sur l'information contenue dans les données du Ministère de l'Intérieur, sans préjuger du genre réel des candidat·es.
 DROP TABLE IF EXISTS repartition_genree_temp;
 
-CREATE TEMP TABLE repartition_genree_temp
+CREATE TABLE repartition_genree_temp
 AS SELECT DISTINCT
     (SELECT count(*) FROM resultats_par_candidat_e WHERE sexe_candidat_e = 'FEMININ') AS nb_candidates,
     (SELECT count(*) FROM resultats_par_candidat_e WHERE sexe_candidat_e = 'MASCULIN') AS nb_candidats,
     (SELECT count(*) FROM resultats_par_candidat_e) AS nb_total_candidat_es,
-    (SELECT count(*) FROM resultats_par_candidat_e WHERE sexe_candidat_e = 'FEMININ' AND "position" = 1) AS nb_candidates_premiere_position,
-    (SELECT count(*) FROM resultats_par_candidat_e WHERE sexe_candidat_e = 'MASCULIN' AND "position" = 1) AS nb_candidats_premiere_position,
-    (SELECT count(*) FROM resultats_par_candidat_e WHERE "position" = 1) AS nb_total_premiere_position,
+    (SELECT count(*) FROM resultats_par_candidat_e WHERE sexe_candidat_e = 'FEMININ' AND "position" = 1) AS nb_candidates_en_premiere_position,
+    (SELECT count(*) FROM resultats_par_candidat_e WHERE sexe_candidat_e = 'MASCULIN' AND "position" = 1) AS nb_candidats_en_premiere_position,
+    (SELECT count(*) FROM resultats_par_candidat_e WHERE "position" = 1) AS nb_total_circos,
     (SELECT count(*) FROM resultats_par_candidat_e WHERE sexe_candidat_e = 'FEMININ' AND rapport_voix_inscrits >= 12.5) AS nb_candidates_qualifiables,
     (SELECT count(*) FROM resultats_par_candidat_e WHERE sexe_candidat_e = 'MASCULIN' AND rapport_voix_inscrits >= 12.5) AS nb_candidats_qualifiables,
     (SELECT count(*) FROM resultats_par_candidat_e WHERE rapport_voix_inscrits >= 12.5) AS nb_total_candidat_es_qualifiables
@@ -24,23 +24,23 @@ DROP TABLE IF EXISTS repartition_genree;
 
 CREATE TABLE repartition_genree
 AS SELECT
-    nb_candidates,
-    trunc((nb_candidates::NUMERIC/nb_total_candidat_es::NUMERIC)*100, 2) AS part_candidates,
-    nb_candidats,
-    trunc((nb_candidats::NUMERIC/nb_total_candidat_es::NUMERIC)*100, 2) AS part_candidats,
     nb_total_candidat_es,
-    nb_candidates_premiere_position,
-    trunc((nb_candidates_premiere_position::NUMERIC/nb_candidates::NUMERIC)*100, 2) AS rapport_candidates_premiere_position_nb_candidates,
-    trunc((nb_candidates_premiere_position::NUMERIC/nb_total_premiere_position::NUMERIC)*100, 2) AS rapport_candidates_premiere_position_nb_total_premiere_position,
-    nb_candidats_premiere_position,
-    trunc((nb_candidats_premiere_position::NUMERIC/nb_candidats::NUMERIC)*100, 2) AS rapport_candidats_premiere_position_nb_candidats,
-    trunc((nb_candidats_premiere_position::NUMERIC/nb_total_premiere_position::NUMERIC)*100, 2) AS rapport_candidats_premiere_position_nb_total_premiere_position,
-    nb_total_premiere_position,
+    nb_candidates,
+    trunc((nb_candidates::NUMERIC/nb_total_candidat_es::NUMERIC)*100, 2) AS rapport_nb_candidates_nb_total_candidat_es,
+    nb_candidats,
+    trunc((nb_candidats::NUMERIC/nb_total_candidat_es::NUMERIC)*100, 2) AS rapport_nb_candidats_nb_total_candidat_es,
+    nb_total_circos,
+    nb_candidates_en_premiere_position,
+    trunc((nb_candidates_en_premiere_position::NUMERIC/nb_candidates::NUMERIC)*100, 2) AS rapport_nb_candidates_en_premiere_position_nb_candidates,
+    trunc((nb_candidates_en_premiere_position::NUMERIC/nb_total_circos::NUMERIC)*100, 2) AS rapport_nb_candidates_en_premiere_position_nb_total_circos,
+    nb_candidats_en_premiere_position,
+    trunc((nb_candidats_en_premiere_position::NUMERIC/nb_candidats::NUMERIC)*100, 2) AS rapport_nb_candidats_en_premiere_position_nb_candidats,
+    trunc((nb_candidats_en_premiere_position::NUMERIC/nb_total_circos::NUMERIC)*100, 2) AS rapport_nb_candidats_en_premiere_position_nb_total_circos,
+    nb_total_candidat_es_qualifiables,
     nb_candidates_qualifiables,
-    trunc((nb_candidates_qualifiables::NUMERIC/nb_candidates::NUMERIC)*100, 2) AS rapport_candidates_qualifiables_nb_candidates,
-    trunc((nb_candidates_qualifiables::NUMERIC/nb_total_candidat_es_qualifiables::NUMERIC)*100, 2) AS rapport_candidates_qualifiables_nb_total_qualifiables,
+    trunc((nb_candidates_qualifiables::NUMERIC/nb_candidates::NUMERIC)*100, 2) AS rapport_nb_candidates_qualifiables_nb_candidates,
+    trunc((nb_candidates_qualifiables::NUMERIC/nb_total_candidat_es_qualifiables::NUMERIC)*100, 2) AS rapport_nb_candidates_qualifiables_nb_total_candidat_es_qualifiables,
     nb_candidats_qualifiables,
-    trunc((nb_candidats_qualifiables::NUMERIC/nb_candidats::NUMERIC)*100, 2) AS rapport_candidats_qualifiables_nb_candidats,
-    trunc((nb_candidats_qualifiables::NUMERIC/nb_total_candidat_es_qualifiables::NUMERIC)*100, 2) AS rapport_candidats_qualifiables_nb_total_qualifiables,
-    nb_total_candidat_es_qualifiables
+    trunc((nb_candidats_qualifiables::NUMERIC/nb_candidats::NUMERIC)*100, 2) AS rapport_nb_candidats_qualifiables_nb_candidats,
+    trunc((nb_candidats_qualifiables::NUMERIC/nb_total_candidat_es_qualifiables::NUMERIC)*100, 2) AS rapport_nb_candidats_qualifiables_nb_total_candidat_es_qualifiables
 FROM repartition_genree_temp;

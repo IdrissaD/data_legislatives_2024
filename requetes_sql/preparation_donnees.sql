@@ -24,9 +24,9 @@ DROP TABLE IF EXISTS circo;
  
 CREATE TABLE circo AS
 SELECT  id_circo AS circo_id,
+        "Libellé circonscription législative" AS circo_libelle,
         dep AS dep_code,
         "Libellé département" AS dep_nom,
-        "Libellé circonscription législative" AS circo_libelle,
         "Inscrits" AS inscriptions,
         "Votants" AS votes,
         "% Votants" AS vote_taux,
@@ -429,15 +429,15 @@ SET "position" = a.ROW_NUMBER
 FROM a WHERE a.circo_id = rpc.circo_id AND a.numero_panneau = rpc.numero_panneau;
 
 
----- Création d'une table joignant les tables "circo" et "resultats_par_candidat_e"
-DROP TABLE IF EXISTS resultats_candidat_es_par_circo;
+---- Création d'une table joignant les tables "circo" et "resultats_par_candidat_e" avec une ligne par candidat-e
+DROP TABLE IF EXISTS resultats_par_candidat_e_avec_chiffres_circo;
 
-CREATE TABLE resultats_candidat_es_par_circo
+CREATE TABLE resultats_par_candidat_e_avec_chiffres_circo
 AS SELECT
     circo.circo_id,
+    circo.circo_libelle,
     circo.dep_code,
     circo.dep_nom,
-    circo.circo_libelle,
     circo.inscriptions,
     circo.votes,
     circo.vote_taux,
@@ -465,3 +465,61 @@ AS SELECT
     rpce.nuance_bloc,
     rpce."position"
 FROM circo JOIN resultats_par_candidat_e rpce ON circo.circo_id = rpce.circo_id AND circo.dep_code = rpce.dep_code;
+
+---- Création d'une table joignant les tables "circo" et "resultats_par_candidat_e" avec une ligne par circonscription et les résultats des candidat-es en JSONb
+DROP TABLE IF EXISTS resultats_par_circo;
+
+CREATE TABLE resultats_par_circo
+AS SELECT
+    circo.circo_id,
+    circo.circo_libelle,
+    circo.dep_code,
+    circo.dep_nom,
+    circo.inscriptions,
+    circo.votes,
+    circo.vote_taux,
+    circo.abstentions,
+    circo.abstention_taux,
+    circo.votes_exprimes,
+    circo.taux_votes_exprimes_inscriptions,
+    circo.taux_votes_exprimes_votes,
+    circo.votes_blancs,
+    circo.taux_votes_blancs_inscriptions,
+    circo.taux_votes_blancs_votes,
+    circo.votes_nuls,
+    circo.taux_votes_nuls_inscriptions,
+    circo.taux_votes_nuls_votes,
+    circo.geom,
+    json_agg(json_build_object(
+            'nom_candidat-e', nom_candidat_e,
+            'prenom_candidat-e', prenom_candidat_e,
+            'sexe_candidate-e', sexe_candidat_e,
+            'numero_panneau', numero_panneau,
+            'nuance_candidat-e', nuance_candidat_e,
+            'bloc_candidat-e', nuance_bloc,
+            'position', "position",
+            'voix', voix,
+            'rapport_voix_inscrits',rapport_voix_inscrits,
+            'rapport_voix_exprimes', rapport_voix_exprimes,
+            'elu-e', elu_e
+        )) AS resultats_candidat_es
+FROM circo JOIN resultats_par_candidat_e rpce ON circo.circo_id = rpce.circo_id AND circo.dep_code = rpce.dep_code
+GROUP BY circo.circo_id,
+    circo.circo_libelle,
+    circo.dep_code,
+    circo.dep_nom,
+    circo.inscriptions,
+    circo.votes,
+    circo.vote_taux,
+    circo.abstentions,
+    circo.abstention_taux,
+    circo.votes_exprimes,
+    circo.taux_votes_exprimes_inscriptions,
+    circo.taux_votes_exprimes_votes,
+    circo.votes_blancs,
+    circo.taux_votes_blancs_inscriptions,
+    circo.taux_votes_blancs_votes,
+    circo.votes_nuls,
+    circo.taux_votes_nuls_inscriptions,
+    circo.taux_votes_nuls_votes,
+    circo.geom;
