@@ -1,5 +1,3 @@
-# Législatives 2024 - données géolocalisées, visualisations et statistiques
-
 Si vous consultez ce README depuis GitHub, cliquez [ici](https://idrissad.github.io/legislatives_2024/) pour une meilleure lecture.
 
 ## Données :
@@ -22,7 +20,8 @@ Résultats de 558 circonscriptions françaises, données manquantes pour les 11 
 <tr><td>EXD</td><td>extrême-droite</td></tr><tr><td>DIV</td><td>divers</td></tr><tr><td>REG</td><td>divers</td></tr></tbody></table>  
 </details>
 
-## [Données mises à disposition :](donnees_produites/)
+
+## Données mises à disposition :
 
 - résultats du 1er tour des élections législatives, circonscription par circonscription (fichiers géolocalisés)
 - résultats du 1er tour des élections législatives, candidat·e par candidat·e (un fichier géolocalisés, un fichier CSV)
@@ -30,7 +29,7 @@ Résultats de 558 circonscriptions françaises, données manquantes pour les 11 
   - Répartition des positions (qualifiable, élu-e) après le premier tour selon le département, la nuance et le bloc politique
   - Nombre de voix moyen et médian, taux de votes par rapport au nombre d'inscriptions et de votes exprimés, par département, nuance et bloc politique
 
-Données téléchargeables sur [data.gouv.fr](https://www.data.gouv.fr/fr/datasets/resultats-provisoires-des-elections-legislatives-francaises-2024-donnees-geolocalisees/) et [GitHub](https://github.com/IdrissaD/legislatives_2024)
+Données téléchargeables sur [data.gouv.fr](https://www.data.gouv.fr/fr/datasets/resultats-provisoires-des-elections-legislatives-francaises-2024-donnees-geolocalisees/) et [GitHub](https://github.com/IdrissaD/legislatives_2024/donnees_produites)
 
 Visualisations interactives disponibles sur Flourish : https://app.flourish.studio/@idrissad
 
