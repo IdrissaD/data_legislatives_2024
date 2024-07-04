@@ -1,6 +1,14 @@
-Projet de mise à disposition de données ordonnées, de chiffres-clefs et de visualisations inédites sur les élections législatives françaises anticipées de 2024. 
+Projet de mise à disposition de données ordonnées, de chiffres-clefs et de visualisations inédites sur les élections législatives françaises anticipées de 2024.
 
-## Données :
+## Visualisations :
+
+Si vous consultez ce README depuis GitHub, cliquez [ici](https://idrissad.github.io/legislatives_2024/) pour avoir accès aux visualisations interactives.
+
+<div class="flourish-embed flourish-chart" data-src="visualisation/18623753"><script src="https://public.flourish.studio/resources/embed.js"></script></div>
+
+<div class="flourish-embed flourish-chart" data-src="visualisation/18624186"><script src="https://public.flourish.studio/resources/embed.js"></script></div>
+
+## Données source :
 
 - [Résultats provisoires du 1er tour - Ministère de l'Intérieur et des Outre-Mer](https://www.data.gouv.fr/fr/datasets/elections-legislatives-des-30-juin-et-7-juillet-2024-resultats-provisoires-du-1er-tour/)
 - [Coordonnées géographiques des circonscriptions - INSEE](https://www.insee.fr/fr/statistiques/6441661?sommaire=6436478)
@@ -21,7 +29,7 @@ Résultats de 558 circonscriptions françaises, données manquantes pour les 11 
 </details>
 
 
-## Données mises à disposition :
+## Données produites :
 
 - résultats du 1er tour des élections législatives, circonscription par circonscription (fichiers géolocalisés)
 - résultats du 1er tour des élections législatives, candidat·e par candidat·e (un fichier géolocalisés, un fichier CSV)
@@ -35,15 +43,10 @@ Visualisations interactives disponibles sur Flourish : https://app.flourish.stud
 
 Images disponibles dans le dossier [visualisations](https://github.com/IdrissaD/legislatives_2024/tree/main/visualisations)
 
-## Visualisations :
+## Licences :
 
-Si vous consultez ce README depuis GitHub, cliquez [ici](https://idrissad.github.io/legislatives_2024/) pour avoir accès aux visualisations interactives.
+Code : [GNU General Public License v3.0](https://github.com/IdrissaD/legislatives_2024/blob/main/LICENSE)
+Données : [ODbL](https://opendatacommons.org/licenses/odbl/summary/)
+Images : [CC-BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
 
-<div class="flourish-embed flourish-chart" data-src="visualisation/18623753"><script src="https://public.flourish.studio/resources/embed.js"></script></div>
-
-<div class="flourish-embed flourish-chart" data-src="visualisation/18624186"><script src="https://public.flourish.studio/resources/embed.js"></script></div>
-
-## Licence :
-
-Toutes les données, images, code source, visualisations de ce dépôt sont distribuées sous licence [GNU General Public License v3.0](https://github.com/IdrissaD/legislatives_2024/blob/main/LICENSE).
-
+(En gros vous réutilisez ce que vous voulez, pour usage commercial ou non, mais vous devez conserver les mêmes licenses pour les réutilisations. Cycle vertueux de la donnée ouverte, tout ça...
