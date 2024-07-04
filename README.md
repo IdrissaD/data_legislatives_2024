@@ -42,13 +42,15 @@ Résultats de 558 circonscriptions françaises, données manquantes pour les 11 
 | DIV                                                              | divers                                                             |
 | REG                                                              | divers                                                             |
 
-## Données mises à disposition :
+[## Données mises à disposition :](donnees_produites/)
 
 - résultats du 1er tour des élections législatives, circonscription par circonscription (fichiers géographiques)
 - résultats du 1er tour des élections législatives, candidat·e par candidat·e (un fichier géographique, un fichier CSV)
-- statistiques générales de la répartition genrée des candidatures et résultats
+- statistiques genrées :
+  - Répartition des positions (qualifiable, élu-e) après le premier tour selon le département, la nuance et le bloc politique
+  - Nombre de voix moyen et médian, taux de votes par rapport au nombre d'inscriptions et de votes exprimés, par département, nuance et bloc politique
 
-Données également disponibles sur [data.gouv.fr](https://www.data.gouv.fr/fr/datasets/resultats-provisoires-des-elections-legislatives-francaises-2024-donnees-geolocalisees/)
+Données également téléchargeables sur [data.gouv.fr](https://www.data.gouv.fr/fr/datasets/resultats-provisoires-des-elections-legislatives-francaises-2024-donnees-geolocalisees/)
 
 ## Chiffres-clefs :
 
