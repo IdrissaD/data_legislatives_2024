@@ -13,34 +13,39 @@ Résultats de 558 circonscriptions françaises, données manquantes pour les 11 
 
 - Jointure des résultats avec les données géolocalisées via le code de circonscription.
 - Réordonnançement des données avec PostgreSQL (renommage et retypage des champs, création d'une ligne par candidat·e, etc.) (cf. preparation_des_donnees)
-- Attribution d'un bloc politique à chacune des 24 nuances [définies par le Ministère de l'Intérieur](https://www.resultats-elections.interieur.gouv.fr/legislatives2024/referentiel.html)y
+- Attribution d'un bloc politique à chacune des 24 nuances [définies par le Ministère de l'Intérieur](https://www.resultats-elections.interieur.gouv.fr/legislatives2024/referentiel.html)
 
-| Nuance définie par le Ministère de l'Intérieur et de l'Outre-mer | Bloc politique de rattachement défini subjectivement par mes soins |
-| ---------------------------------------------------------------- | ------------------------------------------------------------------ |
-| EXG                                                              | extrême-gauche                                                     |
-| UG                                                               | gauche                                                             |
-| FI                                                               | gauche                                                             |
-| ECO                                                              | gauche                                                             |
-| SOC                                                              | gauche                                                             |
-| DVG                                                              | gauche                                                             |
-| COM                                                              | gauche                                                             |
-| VEC                                                              | gauche                                                             |
-| RDG                                                              | gauche                                                             |
-| REN                                                              | centre                                                             |
-| ENS                                                              | centre                                                             |
-| MDM                                                              | centre                                                             |
-| HOR                                                              | centre                                                             |
-| DVC                                                              | centre                                                             |
-| UDI                                                              | centre                                                             |
-| LR                                                               | droite                                                             |
-| DVD                                                              | droite                                                             |
-| DSV                                                              | extrême-droite                                                     |
-| RN                                                               | extrême-droite                                                     |
-| REC                                                              | extrême-droite                                                     |
-| UXD                                                              | extrême-droite                                                     |
-| EXD                                                              | extrême-droite                                                     |
-| DIV                                                              | divers                                                             |
-| REG                                                              | divers                                                             |
+<details>
+  <summary><b>Nuances et leur regroupement par bloc politique</b></summary>
+  
+    | Nuance définie par le Ministère de l'Intérieur et de l'Outre-mer | Bloc politique de rattachement défini subjectivement par mes soins |
+    | ---------------------------------------------------------------- | ------------------------------------------------------------------ |
+    | EXG                                                              | extrême-gauche                                                     |
+    | UG                                                               | gauche                                                             |
+    | FI                                                               | gauche                                                             |
+    | ECO                                                              | gauche                                                             |
+    | SOC                                                              | gauche                                                             |
+    | DVG                                                              | gauche                                                             |
+    | COM                                                              | gauche                                                             |
+    | VEC                                                              | gauche                                                             |
+    | RDG                                                              | gauche                                                             |
+    | REN                                                              | centre                                                             |
+    | ENS                                                              | centre                                                             |
+    | MDM                                                              | centre                                                             |
+    | HOR                                                              | centre                                                             |
+    | DVC                                                              | centre                                                             |
+    | UDI                                                              | centre                                                             |
+    | LR                                                               | droite                                                             |
+    | DVD                                                              | droite                                                             |
+    | DSV                                                              | extrême-droite                                                     |
+    | RN                                                               | extrême-droite                                                     |
+    | REC                                                              | extrême-droite                                                     |
+    | UXD                                                              | extrême-droite                                                     |
+    | EXD                                                              | extrême-droite                                                     |
+    | DIV                                                              | divers                                                             |
+    | REG                                                              | divers                                                             |
+    
+</details>
 
 ## [Données mises à disposition :](donnees_produites/)
 
@@ -66,5 +71,7 @@ Images disponibles dans le dossier [visualisations](/visualisations)
 
 
 ## Statistiques :
+
+<div class="flourish-embed flourish-chart" data-src="visualisation/18623753"><script src="https://public.flourish.studio/resources/embed.js"></script></div>
 
 ## Cartographies :
