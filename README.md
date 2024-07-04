@@ -1,8 +1,4 @@
-# Législatives 2024
-
-Résultats des élections législatives françaises 2024 : données géolocalisées et réordonnées, analyses statistiques, cartographies.
-
-Cette page est conçue pour s'afficher correctement à ce lien : https://idrissad.github.io/legislatives_2024/
+Si vous consultez ce README depuis GitHub, cliquez [ici](https://idrissad.github.io/legislatives_2024/) pour une meilleure lecture.
 
 ## Données :
 
