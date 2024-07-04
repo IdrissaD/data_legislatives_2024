@@ -1,7 +1,4 @@
 
-
-Si vous consultez ce README depuis GitHub, cliquez [ici](https://idrissad.github.io/legislatives_2024/) pour une meilleure lecture.
-
 ## Données :
 
 - [Résultats provisoires du 1er tour - Ministère de l'Intérieur et des Outre-Mer](https://www.data.gouv.fr/fr/datasets/elections-legislatives-des-30-juin-et-7-juillet-2024-resultats-provisoires-du-1er-tour/)
@@ -38,6 +35,8 @@ Visualisations interactives disponibles sur Flourish : https://app.flourish.stud
 Images disponibles dans le dossier [visualisations](https://github.com/IdrissaD/legislatives_2024/tree/main/visualisations)
 
 ## Visualisations :
+
+Si vous consultez ce README depuis GitHub, cliquez [ici](https://idrissad.github.io/legislatives_2024/) pour avoir accès aux visualisations interactives.
 
 <div class="flourish-embed flourish-chart" data-src="visualisation/18623753"><script src="https://public.flourish.studio/resources/embed.js"></script></div>
 
