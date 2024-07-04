@@ -54,6 +54,8 @@ Données également téléchargeables sur [data.gouv.fr](https://www.data.gouv.f
 
 Visualisations interactives disponibles sur Flourish : https://app.flourish.studio/@idrissad
 
+Images disponibles dans le dossier [visualisations](/visualisations)
+
 ## Chiffres-clefs :
 
 ### Répartition genrée des candidat·es au premier tour par bloc politique :
