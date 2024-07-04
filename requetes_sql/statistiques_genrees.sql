@@ -8,9 +8,9 @@
 ---- REPARTITION DES POSITIONS (qualifiable, élu-e...)
 
 -- Répartition genrée par département, nuance et bloc politique
-DROP TABLE IF EXISTS repartition_genree_positions_par_departement_nuance_et_bloc;
+DROP TABLE IF EXISTS repartition_genree_positions_par_dpt_nuance_et_bloc;
 
-CREATE TABLE repartition_genree_positions_par_departement_nuance_et_bloc
+CREATE TABLE repartition_genree_positions_par_dpt_nuance_et_bloc
 AS
 SELECT
     dep_code,
@@ -39,7 +39,7 @@ SELECT
     sum(qualifiables) AS qualifiables,
     sum(premiere_position) AS premiere_position,
     sum("elu-es") AS "elu-es"
-FROM repartition_genree_positions_par_departement_nuance_et_bloc
+FROM repartition_genree_positions_par_dpt_nuance_et_bloc
 GROUP BY nuance, nuance_bloc, "genre_candidat-es"
 ORDER BY nuance_bloc, nuance, "genre_candidat-es";
 
@@ -78,9 +78,9 @@ ORDER BY "genre_candidat-es";
 
 
 -- Répartition genrée par département
-DROP TABLE IF EXISTS repartition_genree_positions_par_departement;
+DROP TABLE IF EXISTS repartition_genree_positions_par_dpt;
 
-CREATE TABLE repartition_genree_positions_par_departement
+CREATE TABLE repartition_genree_positions_par_dpt
 AS
 SELECT
     dep_code,
@@ -89,7 +89,7 @@ SELECT
     sum(qualifiables) AS qualifiables,
     sum(premiere_position) AS premiere_position,
     sum("elu-es") AS "elu-es"
-FROM repartition_genree_positions_par_departement_nuance_et_bloc
+FROM repartition_genree_positions_par_dpt_nuance_et_bloc
 GROUP BY dep_code, "genre_candidat-es"
 ORDER BY dep_code, "genre_candidat-es";
 
@@ -98,9 +98,9 @@ ORDER BY dep_code, "genre_candidat-es";
 
 
 -- Résultats en nombre de voix et pourcentages moyens et médians par genre, département, nuance et bloc politique
-DROP TABLE IF EXISTS repartition_genree_voix_et_pourcentages_par_departement_nuance_et_bloc;
+DROP TABLE IF EXISTS repartition_genree_voix_et_pourcentages_par_dpt_nuance_et_bloc;
 
-CREATE TABLE repartition_genree_voix_et_pourcentages_par_departement_nuance_et_bloc
+CREATE TABLE repartition_genree_voix_et_pourcentages_par_dpt_nuance_et_bloc
 AS
 SELECT
     dep_code,
@@ -167,9 +167,9 @@ ORDER BY "genre_candidat-e";
 
 
 -- Résultats en nombre de voix et pourcentages moyens et médians par genre et département
-DROP TABLE IF EXISTS repartition_genree_voix_et_pourcentages_par_departement;
+DROP TABLE IF EXISTS repartition_genree_voix_et_pourcentages_par_dpt;
 
-CREATE TABLE repartition_genree_voix_et_pourcentages_par_departement
+CREATE TABLE repartition_genree_voix_et_pourcentages_par_dpt
 AS
 SELECT
     dep_code,
