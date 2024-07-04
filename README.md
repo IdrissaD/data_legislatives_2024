@@ -10,7 +10,7 @@ Résultats de 558 circonscriptions françaises, données manquantes pour les 11 
 ## Méthode :
 
 - Jointure des résultats avec les données géolocalisées via le code de circonscription.
-- Réordonnançement des données avec PostgreSQL (renommage et retypage des champs, création d'une ligne par candidat·e, etc.) (cf. preparation_des_donnees)
+- Réordonnançement des données avec PostgreSQL (renommage et retypage des champs, création d'une ligne par candidat·e, etc.) (cf. [preparation_des_donnees.sql](https://github.com/IdrissaD/legislatives_2024/requetes_sql/))
 - Attribution d'un bloc politique à chacune des 24 nuances [définies par le Ministère de l'Intérieur](https://www.resultats-elections.interieur.gouv.fr/legislatives2024/referentiel.html)
 
 <details>
@@ -28,7 +28,7 @@ Résultats de 558 circonscriptions françaises, données manquantes pour les 11 
   - Répartition des positions (qualifiable, élu-e) après le premier tour selon le département, la nuance et le bloc politique
   - Nombre de voix moyen et médian, taux de votes par rapport au nombre d'inscriptions et de votes exprimés, par département, nuance et bloc politique
 
-Données également téléchargeables sur [data.gouv.fr](https://www.data.gouv.fr/fr/datasets/resultats-provisoires-des-elections-legislatives-francaises-2024-donnees-geolocalisees/)
+Données téléchargeables sur [data.gouv.fr](https://www.data.gouv.fr/fr/datasets/resultats-provisoires-des-elections-legislatives-francaises-2024-donnees-geolocalisees/) et [GitHub](https://github.com/IdrissaD/legislatives_2024)
 
 Visualisations interactives disponibles sur Flourish : https://app.flourish.studio/@idrissad
 
@@ -40,17 +40,7 @@ Images disponibles dans le dossier [visualisations](https://github.com/IdrissaD/
 
 <div class="flourish-embed flourish-chart" data-src="visualisation/18624186"><script src="https://public.flourish.studio/resources/embed.js"></script></div>
 
+## Licence :
 
+Toutes les données, images, code source, visualisations de ce dépôt sont distribuées sous licence [GNU General Public License v3.0](https://github.com/IdrissaD/legislatives_2024/blob/main/LICENSE).
 
-
-### Répartition genrée des candidat·es au premier tour par bloc politique :
-![Répartition genrée des candidat·es par bloc politique](https://github.com/IdrissaD/legislatives_2024/visualisations/Répartition%20genrée%20par%20bloc%20politique%20-%20candidat-es.png)
-
-### Répartition genrée des candidat·es arrivé·es en première position du premier tour par bloc politique :
-![Répartition genrée des candidat·es arrivé·es en première position du premier tour par bloc politique](https://github.com/IdrissaD/legislatives_2024/visualisations/Répartition%20genrée%20par%20bloc%20politique%20-%20première%20position.png)
-
-
-## Statistiques :
-
-
-## Cartographies :
