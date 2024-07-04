@@ -16,14 +16,14 @@ SELECT
     dep_code,
     nuance,
     nuance_bloc,
-    genre_candidat_e,
-    count(*) AS candidat_es,
-    count(rapport_voix_inscrits >= 12.5 OR NULL) AS qualifiables,
+    "genre_candidat-e" AS "genre_candidat-es",
+    count(*) AS "candidat-es",
+    count("taux_voix/inscriptions" >= 12.5 OR NULL) AS qualifiables,
     count("position" = 1 OR NULL) AS premiere_position,
-    count(elu_e = TRUE OR NULL) AS elu_es
+    count("elu-e" = TRUE OR NULL) AS "elu-es"
 FROM resultats_par_candidat_e
-GROUP BY dep_code, nuance, nuance_bloc, genre_candidat_e
-ORDER BY dep_code, nuance_bloc, nuance, genre_candidat_e;
+GROUP BY dep_code, nuance, nuance_bloc, "genre_candidat-e"
+ORDER BY dep_code, nuance_bloc, nuance, "genre_candidat-e";
 
 
 -- Répartition genrée par nuance et bloc politique
@@ -34,14 +34,14 @@ AS
 SELECT
     nuance,
     nuance_bloc,
-    genre_candidat_e,
-    sum(candidat_es) AS candidat_es,
+    "genre_candidat-es",
+    sum("candidat-es") AS "candidat-es",
     sum(qualifiables) AS qualifiables,
     sum(premiere_position) AS premiere_position,
-    sum(elu_es) AS elu_es
+    sum("elu-es") AS "elu-es"
 FROM repartition_genree_positions_par_departement_nuance_et_bloc
-GROUP BY nuance, nuance_bloc, genre_candidat_e
-ORDER BY nuance_bloc, nuance, genre_candidat_e;
+GROUP BY nuance, nuance_bloc, "genre_candidat-es"
+ORDER BY nuance_bloc, nuance, "genre_candidat-es";
 
 
 -- Répartition genrée par bloc politique
@@ -51,14 +51,14 @@ CREATE TABLE repartition_genree_positions_par_bloc
 AS
 SELECT
     nuance_bloc,
-    genre_candidat_e,
-    sum(candidat_es) AS candidat_es,
+    "genre_candidat-es",
+    sum("candidat-es") AS "candidat-es",
     sum(qualifiables) AS qualifiables,
     sum(premiere_position) AS premiere_position,
-    sum(elu_es) AS elu_es
+    sum("elu-es") AS "elu-es"
 FROM repartition_genree_positions_par_nuance_et_bloc
-GROUP BY nuance_bloc, genre_candidat_e
-ORDER BY nuance_bloc, genre_candidat_e;
+GROUP BY nuance_bloc, "genre_candidat-es"
+ORDER BY nuance_bloc, "genre_candidat-es";
 
 
 -- Répartition genrée générale
@@ -67,14 +67,14 @@ DROP TABLE IF EXISTS repartition_genree_positions_generales;
 CREATE TABLE repartition_genree_positions_generales
 AS
 SELECT
-    genre_candidat_e,
-    sum(candidat_es) AS candidat_es,
+    "genre_candidat-es",
+    sum("candidat-es") AS "candidat-es",
     sum(qualifiables) AS qualifiables,
     sum(premiere_position) AS premiere_position,
-    sum(elu_es) AS elu_es
+    sum("elu-es") AS "elu-es"
 FROM repartition_genree_positions_par_bloc
-GROUP BY genre_candidat_e
-ORDER BY genre_candidat_e;
+GROUP BY "genre_candidat-es"
+ORDER BY "genre_candidat-es";
 
 
 -- Répartition genrée par département
@@ -84,14 +84,14 @@ CREATE TABLE repartition_genree_positions_par_departement
 AS
 SELECT
     dep_code,
-    genre_candidat_e,
-    sum(candidat_es) AS candidat_es,
+    "genre_candidat-es",
+    sum("candidat-es") AS "candidat-es",
     sum(qualifiables) AS qualifiables,
     sum(premiere_position) AS premiere_position,
-    sum(elu_es) AS elu_es
+    sum("elu-es") AS "elu-es"
 FROM repartition_genree_positions_par_departement_nuance_et_bloc
-GROUP BY dep_code, genre_candidat_e
-ORDER BY dep_code, genre_candidat_e;
+GROUP BY dep_code, "genre_candidat-es"
+ORDER BY dep_code, "genre_candidat-es";
 
 
 ---- MOYENNES ET MEDIANES DE VOIX ET POURCENTAGES
@@ -106,14 +106,14 @@ SELECT
     dep_code,
     nuance,
     nuance_bloc,
-    genre_candidat_e,
+    "genre_candidat-e" AS "genre_candidat-es",
     round(avg(voix)) AS voix_moyenne,
     PERCENTILE_CONT(0.5) WITHIN GROUP(ORDER BY voix) AS voix_mediane,
-    round(avg(rapport_voix_inscrits),2) AS rapport_voix_inscrits_moyenne,
-    round(avg(rapport_voix_exprimes),2) AS rapport_voix_exprimes_moyenne
+    round(avg("taux_voix/inscriptions"),2) AS "taux_voix/inscriptions_moyenne",
+    round(avg("taux_voix/exprimes"),2) AS "taux_voix/exprimes_moyenne"
 FROM resultats_par_candidat_e
-GROUP BY dep_code, nuance, nuance_bloc, genre_candidat_e
-ORDER BY dep_code, nuance_bloc, nuance, genre_candidat_e;
+GROUP BY dep_code, nuance, nuance_bloc, "genre_candidat-e"
+ORDER BY dep_code, nuance_bloc, nuance, "genre_candidat-e";
 
 -- Résultats en nombre de voix et pourcentages moyens et médians par genre, nuance et bloc politique
 DROP TABLE IF EXISTS repartition_genree_voix_et_pourcentages_par_nuance_et_bloc;
@@ -123,14 +123,14 @@ AS
 SELECT
     nuance,
     nuance_bloc,
-    genre_candidat_e,
+    "genre_candidat-e" AS "genre_candidat-es",
     round(avg(voix)) AS voix_moyenne,
     PERCENTILE_CONT(0.5) WITHIN GROUP(ORDER BY voix) AS voix_mediane,
-    round(avg(rapport_voix_inscrits),2) AS rapport_voix_inscrits_moyenne,
-    round(avg(rapport_voix_exprimes),2) AS rapport_voix_exprimes_moyenne
+    round(avg("taux_voix/inscriptions"),2) AS "taux_voix/inscriptions_moyenne",
+    round(avg("taux_voix/exprimes"),2) AS "taux_voix/exprimes_moyenne"
 FROM resultats_par_candidat_e
-GROUP BY nuance, nuance_bloc, genre_candidat_e
-ORDER BY nuance_bloc, nuance, genre_candidat_e
+GROUP BY nuance, nuance_bloc, "genre_candidat-e"
+ORDER BY nuance_bloc, nuance, "genre_candidat-e"
 
 
 ;-- Résultats en nombre de voix et pourcentages moyens et médians par genre et bloc politique
@@ -140,14 +140,14 @@ CREATE TABLE repartition_genree_voix_et_pourcentages_par_bloc
 AS
 SELECT
     nuance_bloc,
-    genre_candidat_e,
+    "genre_candidat-e" AS "genre_candidat-es",
     round(avg(voix)) AS voix_moyenne,
     PERCENTILE_CONT(0.5) WITHIN GROUP(ORDER BY voix) AS voix_mediane,
-    round(avg(rapport_voix_inscrits),2) AS rapport_voix_inscrits_moyenne,
-    round(avg(rapport_voix_exprimes),2) AS rapport_voix_exprimes_moyenne
+    round(avg("taux_voix/inscriptions"),2) AS "taux_voix/inscriptions_moyenne",
+    round(avg("taux_voix/exprimes"),2) AS "taux_voix/exprimes_moyenne"
 FROM resultats_par_candidat_e
-GROUP BY nuance_bloc, genre_candidat_e
-ORDER BY nuance_bloc, genre_candidat_e
+GROUP BY nuance_bloc, "genre_candidat-e"
+ORDER BY nuance_bloc, "genre_candidat-e"
 
 
 ;-- Résultats en nombre de voix et pourcentages moyens et médians par genre
@@ -156,14 +156,14 @@ DROP TABLE IF EXISTS repartition_genree_voix_et_pourcentages;
 CREATE TABLE repartition_genree_voix_et_pourcentages
 AS
 SELECT
-    genre_candidat_e,
+    "genre_candidat-e" AS "genre_candidat-es",
     round(avg(voix)) AS voix_moyenne,
     PERCENTILE_CONT(0.5) WITHIN GROUP(ORDER BY voix) AS voix_mediane,
-    round(avg(rapport_voix_inscrits),2) AS rapport_voix_inscrits_moyenne,
-    round(avg(rapport_voix_exprimes),2) AS rapport_voix_exprimes_moyenne
+    round(avg("taux_voix/inscriptions"),2) AS "taux_voix/inscriptions_moyenne",
+    round(avg("taux_voix/exprimes"),2) AS "taux_voix/exprimes_moyenne"
 FROM resultats_par_candidat_e
-GROUP BY genre_candidat_e
-ORDER BY genre_candidat_e;
+GROUP BY "genre_candidat-e"
+ORDER BY "genre_candidat-e";
 
 
 -- Résultats en nombre de voix et pourcentages moyens et médians par genre et département
@@ -173,11 +173,11 @@ CREATE TABLE repartition_genree_voix_et_pourcentages_par_departement
 AS
 SELECT
     dep_code,
-    genre_candidat_e,
+    "genre_candidat-e" AS "genre_candidat-es",
     round(avg(voix)) AS voix_moyenne,
     PERCENTILE_CONT(0.5) WITHIN GROUP(ORDER BY voix) AS voix_mediane,
-    round(avg(rapport_voix_inscrits),2) AS rapport_voix_inscrits_moyenne,
-    round(avg(rapport_voix_exprimes),2) AS rapport_voix_exprimes_moyenne
+    round(avg("taux_voix/inscriptions"),2) AS "taux_voix/inscriptions_moyenne",
+    round(avg("taux_voix/exprimes"),2) AS "taux_voix/exprimes_moyenne"
 FROM resultats_par_candidat_e
-GROUP BY dep_code, genre_candidat_e
-ORDER BY dep_code, genre_candidat_e;
+GROUP BY dep_code, "genre_candidat-e"
+ORDER BY dep_code, "genre_candidat-e";

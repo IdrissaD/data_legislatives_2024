@@ -33,14 +33,14 @@ SELECT  id_circo AS circo_id,
         "Abstentions" AS abstentions,
         "% Abstentions" AS abstention_taux,
         "Exprimés" AS votes_exprimes,
-        "% Exprimés/inscrits" AS taux_votes_exprimes_inscriptions,
-        "% Exprimés/votants" AS taux_votes_exprimes_votes,
+        "% Exprimés/inscrits" AS "taux_votes_exprimes/inscriptions",
+        "% Exprimés/votants" AS "taux_votes_exprimes/votes",
         "Blancs" AS votes_blancs,
-        "% Blancs/inscrits" AS taux_votes_blancs_inscriptions,
-        "% Blancs/votants" AS taux_votes_blancs_votes,
+        "% Blancs/inscrits" AS "taux_votes_blancs/inscriptions",
+        "% Blancs/votants" AS "taux_votes_blancs/votes",
         "Nuls" AS votes_nuls,
-        "% Nuls/inscrits" AS taux_votes_nuls_inscriptions,
-        "% Nuls/votants" AS taux_votes_nuls_votes,
+        "% Nuls/inscrits" AS "taux_votes_nuls/inscriptions",
+        "% Nuls/votants" AS "taux_votes_nuls/votes",
         geom
 FROM resultats_complets rc;
 
@@ -48,12 +48,12 @@ FROM resultats_complets rc;
 UPDATE circo
 SET vote_taux = REPLACE(REPLACE(vote_taux, '%', ''), ',', '.'),
     abstention_taux = REPLACE(REPLACE(abstention_taux, '%', ''), ',', '.'),
-    taux_votes_exprimes_inscriptions = REPLACE(REPLACE(taux_votes_exprimes_inscriptions, '%', ''), ',', '.'),
-    taux_votes_exprimes_votes = REPLACE(REPLACE(taux_votes_exprimes_votes, '%', ''), ',', '.'),
-    taux_votes_blancs_inscriptions = REPLACE(REPLACE(taux_votes_blancs_inscriptions, '%', ''), ',', '.'),
-    taux_votes_blancs_votes = REPLACE(REPLACE(taux_votes_blancs_votes, '%', ''), ',', '.'),
-    taux_votes_nuls_inscriptions = REPLACE(REPLACE(taux_votes_nuls_inscriptions, '%', ''), ',', '.'),
-    taux_votes_nuls_votes = REPLACE(REPLACE(taux_votes_nuls_votes, '%', ''), ',', '.');
+    "taux_votes_exprimes/inscriptions" = REPLACE(REPLACE("taux_votes_exprimes/inscriptions", '%', ''), ',', '.'),
+    "taux_votes_exprimes/votes" = REPLACE(REPLACE("taux_votes_exprimes/votes", '%', ''), ',', '.'),
+    "taux_votes_blancs/inscriptions" = REPLACE(REPLACE("taux_votes_blancs/inscriptions", '%', ''), ',', '.'),
+    "taux_votes_blancs/votes" = REPLACE(REPLACE("taux_votes_blancs/votes", '%', ''), ',', '.'),
+    "taux_votes_nuls/inscriptions" = REPLACE(REPLACE("taux_votes_nuls/inscriptions", '%', ''), ',', '.'),
+    "taux_votes_nuls/votes" = REPLACE(REPLACE("taux_votes_nuls/votes", '%', ''), ',', '.');
 
 -- Retypage des champs qui représentent des taux d'un type textuel à un type numérique
 ALTER TABLE circo
@@ -63,23 +63,23 @@ ALTER TABLE circo
 ALTER COLUMN abstention_taux TYPE NUMERIC USING abstention_taux::numeric;
 
 ALTER TABLE circo
-ALTER COLUMN taux_votes_exprimes_inscriptions TYPE NUMERIC USING taux_votes_exprimes_inscriptions::numeric;
+ALTER COLUMN "taux_votes_exprimes/inscriptions" TYPE NUMERIC USING "taux_votes_exprimes/inscriptions"::numeric;
 
 ALTER TABLE circo
-ALTER COLUMN taux_votes_exprimes_votes TYPE NUMERIC USING taux_votes_exprimes_votes::numeric;
+ALTER COLUMN "taux_votes_exprimes/votes" TYPE NUMERIC USING "taux_votes_exprimes/votes"::numeric;
 
 ALTER TABLE circo
-ALTER COLUMN taux_votes_blancs_inscriptions TYPE NUMERIC USING taux_votes_blancs_inscriptions::numeric;
+ALTER COLUMN "taux_votes_blancs/inscriptions" TYPE NUMERIC USING "taux_votes_blancs/inscriptions"::numeric;
 
 ALTER TABLE circo
-ALTER COLUMN taux_votes_blancs_votes TYPE NUMERIC USING taux_votes_blancs_votes::numeric;
+ALTER COLUMN "taux_votes_blancs/votes" TYPE NUMERIC USING "taux_votes_blancs/votes"::numeric;
 
 ALTER TABLE circo
-ALTER COLUMN taux_votes_nuls_inscriptions TYPE NUMERIC USING taux_votes_nuls_inscriptions::numeric;
+ALTER COLUMN "taux_votes_nuls/inscriptions" TYPE NUMERIC USING "taux_votes_nuls/inscriptions"::numeric;
 
 ALTER TABLE circo
-ALTER COLUMN taux_votes_nuls_votes TYPE NUMERIC USING taux_votes_nuls_votes::numeric;
-    
+ALTER COLUMN "taux_votes_nuls/votes" TYPE NUMERIC USING "taux_votes_nuls/votes"::numeric;
+
 ---- Création d'une table où chaque candidat·e a sa propre ligne
 DROP TABLE IF EXISTS resultats_par_candidat_e;
 
@@ -89,13 +89,13 @@ id_circo AS circo_id,
 dep AS dep_code,
 "Numéro de panneau 1" AS numero_panneau,
 "Nuance candidat 1" AS nuance,
-"Nom candidat 1" AS nom_candidat_e,
-"Prénom candidat 1" AS prenom_candidat_e,
-"Sexe candidat 1" AS genre_candidat_e,
+"Nom candidat 1" AS "nom_candidat-e",
+"Prénom candidat 1" AS "prenom_candidat-e",
+"Sexe candidat 1" AS "genre_candidat-e",
 "Voix 1" AS voix,
-"% Voix/inscrits 1" AS rapport_voix_inscrits,
-"% Voix/exprimés 1" AS rapport_voix_exprimes,
-"Elu 1" AS elu_e
+"% Voix/inscrits 1" AS "taux_voix/inscriptions",
+"% Voix/exprimés 1" AS "taux_voix/exprimes",
+"Elu 1" AS "elu-e"
 FROM resultats_complets rc
 WHERE "Numéro de panneau 1" IS NOT NULL
 UNION 
@@ -369,39 +369,39 @@ dep AS dep_code,
 FROM resultats_complets rc
 WHERE "Numéro de panneau 19" IS NOT NULL;
 
--- Transformation du champ "elu_e" de textuel à booléen (Vrai/Faux)
+-- Transformation du champ ""elu-e"" de textuel à booléen (Vrai/Faux)
 ALTER TABLE resultats_par_candidat_e
-ADD COLUMN elu_e_bool boolean;
+ADD COLUMN "elu-e_bool" boolean;
 
 UPDATE resultats_par_candidat_e
-SET elu_e_bool = TRUE
-WHERE elu_e = 'élu';
+SET "elu-e_bool" = TRUE
+WHERE "elu-e" = 'élu';
 
 UPDATE resultats_par_candidat_e
-SET elu_e_bool = TRUE
-WHERE elu_e = 'élu';
+SET "elu-e_bool" = TRUE
+WHERE "elu-e" = 'élu';
 
 ALTER TABLE resultats_par_candidat_e
-DROP COLUMN elu_e;
+DROP COLUMN "elu-e";
 
 ALTER TABLE resultats_par_candidat_e
-RENAME COLUMN elu_e_bool TO elu_e;
+RENAME COLUMN "elu-e_bool" TO "elu-e";
 
 -- Suppression des caractères '%' et remplacement des virgules par des points
 UPDATE resultats_par_candidat_e
-SET rapport_voix_inscrits = REPLACE(rapport_voix_inscrits, '%', ''),
-    rapport_voix_exprimes = REPLACE(rapport_voix_exprimes, '%', '');
+SET "taux_voix/inscriptions" = REPLACE("taux_voix/inscriptions", '%', ''),
+    "taux_voix/exprimes" = REPLACE("taux_voix/exprimes", '%', '');
 
 UPDATE resultats_par_candidat_e
-SET rapport_voix_inscrits = REPLACE(rapport_voix_inscrits, ',', '.'),
-    rapport_voix_exprimes = REPLACE(rapport_voix_exprimes, ',', '.');
+SET "taux_voix/inscriptions" = REPLACE("taux_voix/inscriptions", ',', '.'),
+    "taux_voix/exprimes" = REPLACE("taux_voix/exprimes", ',', '.');
 
 -- Retypage des champs qui représentent des taux d'un type textuel à un type numérique
 ALTER TABLE resultats_par_candidat_e
-ALTER COLUMN rapport_voix_inscrits TYPE NUMERIC USING rapport_voix_inscrits::numeric;
+ALTER COLUMN "taux_voix/inscriptions" TYPE NUMERIC USING "taux_voix/inscriptions"::numeric;
 
 ALTER TABLE resultats_par_candidat_e
-ALTER COLUMN rapport_voix_exprimes TYPE NUMERIC USING rapport_voix_exprimes::numeric;
+ALTER COLUMN "taux_voix/exprimes" TYPE NUMERIC USING "taux_voix/exprimes"::numeric;
 
 -- Ajout d'une colonne "nuance_bloc"
 ALTER TABLE resultats_par_candidat_e ADD COLUMN nuance_bloc varchar;
@@ -448,24 +448,24 @@ AS SELECT
     circo.abstentions,
     circo.abstention_taux,
     circo.votes_exprimes,
-    circo.taux_votes_exprimes_inscriptions,
-    circo.taux_votes_exprimes_votes,
+    circo."taux_votes_exprimes/inscriptions",
+    circo."taux_votes_exprimes/votes",
     circo.votes_blancs,
-    circo.taux_votes_blancs_inscriptions,
-    circo.taux_votes_blancs_votes,
+    circo."taux_votes_blancs/inscriptions",
+    circo."taux_votes_blancs/votes",
     circo.votes_nuls,
-    circo.taux_votes_nuls_inscriptions,
-    circo.taux_votes_nuls_votes,
+    circo."taux_votes_nuls/inscriptions",
+    circo."taux_votes_nuls/votes",
     circo.geom,
     rpce.numero_panneau,
     rpce.nuance,
-    rpce.nom_candidat_e,
-    rpce.prenom_candidat_e,
-    rpce.genre_candidat_e,
+    rpce."nom_candidat-e",
+    rpce."prenom_candidat-e",
+    rpce."genre_candidat-e",
     rpce.voix,
-    rpce.rapport_voix_inscrits,
-    rpce.rapport_voix_exprimes,
-    rpce.elu_e,
+    rpce."taux_voix/inscriptions",
+    rpce."taux_voix/exprimes",
+    rpce."elu-e",
     rpce.nuance_bloc,
     rpce."position"
 FROM circo JOIN resultats_par_candidat_e rpce ON circo.circo_id = rpce.circo_id AND circo.dep_code = rpce.dep_code;
@@ -485,28 +485,28 @@ AS SELECT
     circo.abstentions,
     circo.abstention_taux,
     circo.votes_exprimes,
-    circo.taux_votes_exprimes_inscriptions,
-    circo.taux_votes_exprimes_votes,
+    circo."taux_votes_exprimes/inscriptions",
+    circo."taux_votes_exprimes/votes",
     circo.votes_blancs,
-    circo.taux_votes_blancs_inscriptions,
-    circo.taux_votes_blancs_votes,
+    circo."taux_votes_blancs/inscriptions",
+    circo."taux_votes_blancs/votes",
     circo.votes_nuls,
-    circo.taux_votes_nuls_inscriptions,
-    circo.taux_votes_nuls_votes,
+    circo."taux_votes_nuls/inscriptions",
+    circo."taux_votes_nuls/votes",
     circo.geom,
     json_agg(json_build_object(
-            'nom_candidat-e', nom_candidat_e,
-            'prenom_candidat-e', prenom_candidat_e,
-            'genre_candidat-e', genre_candidat_e,
+            'nom_candidat-e', "nom_candidat-e",
+            'prenom_candidat-e', "prenom_candidat-e",
+            'genre_candidat-e', "genre_candidat-e",
             'numero_panneau', numero_panneau,
             'nuance', nuance,
             'nuance_bloc', nuance_bloc,
             'position', "position",
             'voix', voix,
-            'rapport_voix/inscrits',rapport_voix_inscrits,
-            'rapport_voix/exprimes', rapport_voix_exprimes,
-            'elu-e', elu_e
-        )) AS resultats_candidat_es
+            'taux_voix/inscriptions', "taux_voix/inscriptions",
+            'taux_voix/exprimes', "taux_voix/exprimes",
+            'elu-e', "elu-e"
+        )) AS "resultats_candidat-es"
 FROM circo JOIN resultats_par_candidat_e rpce ON circo.circo_id = rpce.circo_id AND circo.dep_code = rpce.dep_code
 GROUP BY circo.circo_id,
     circo.circo_libelle,
@@ -518,18 +518,18 @@ GROUP BY circo.circo_id,
     circo.abstentions,
     circo.abstention_taux,
     circo.votes_exprimes,
-    circo.taux_votes_exprimes_inscriptions,
-    circo.taux_votes_exprimes_votes,
+    circo."taux_votes_exprimes/inscriptions",
+    circo."taux_votes_exprimes/votes",
     circo.votes_blancs,
-    circo.taux_votes_blancs_inscriptions,
-    circo.taux_votes_blancs_votes,
+    circo."taux_votes_blancs/inscriptions",
+    circo."taux_votes_blancs/votes",
     circo.votes_nuls,
-    circo.taux_votes_nuls_inscriptions,
-    circo.taux_votes_nuls_votes,
+    circo."taux_votes_nuls/inscriptions",
+    circo."taux_votes_nuls/votes",
     circo.geom;
 
 ALTER TABLE resultats_par_circo
-ADD COLUMN resultats_candidat_es_string varchar;
+ADD COLUMN "resultats_candidat-es_string" varchar;
 
 UPDATE resultats_par_circo
-SET resultats_candidat_es_string = resultats_candidat_es::varchar;
+SET "resultats_candidat-es_string" = "resultats_candidat-es"::varchar;
