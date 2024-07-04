@@ -1,6 +1,4 @@
----
-title: "Législatives 2024 - données géolocalisées, visualisations et statistiques"
----
+
 
 Si vous consultez ce README depuis GitHub, cliquez [ici](https://idrissad.github.io/legislatives_2024/) pour une meilleure lecture.
 
