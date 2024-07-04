@@ -11,7 +11,7 @@ Résultats de 558 circonscriptions françaises, données manquantes pour les 11 
 
 ## Méthode :
 
-- Jointure des résultats avec les données géographiques via le code de circonscription.
+- Jointure des résultats avec les données géolocalisées via le code de circonscription.
 - Réordonnançement des données avec PostgreSQL (renommage et retypage des champs, création d'une ligne par candidat·e, etc.) (cf. preparation_des_donnees)
 - Attribution d'un bloc politique à chacune des 24 nuances [définies par le Ministère de l'Intérieur](https://www.resultats-elections.interieur.gouv.fr/legislatives2024/referentiel.html)y
 
@@ -44,15 +44,24 @@ Résultats de 558 circonscriptions françaises, données manquantes pour les 11 
 
 ## [Données mises à disposition :](donnees_produites/)
 
-- résultats du 1er tour des élections législatives, circonscription par circonscription (fichiers géographiques)
-- résultats du 1er tour des élections législatives, candidat·e par candidat·e (un fichier géographique, un fichier CSV)
+- résultats du 1er tour des élections législatives, circonscription par circonscription (fichiers géolocalisés)
+- résultats du 1er tour des élections législatives, candidat·e par candidat·e (un fichier géolocalisés, un fichier CSV)
 - statistiques genrées :
   - Répartition des positions (qualifiable, élu-e) après le premier tour selon le département, la nuance et le bloc politique
   - Nombre de voix moyen et médian, taux de votes par rapport au nombre d'inscriptions et de votes exprimés, par département, nuance et bloc politique
 
 Données également téléchargeables sur [data.gouv.fr](https://www.data.gouv.fr/fr/datasets/resultats-provisoires-des-elections-legislatives-francaises-2024-donnees-geolocalisees/)
 
+Visualisations interactives disponibles sur Flourish : https://app.flourish.studio/@idrissad
+
 ## Chiffres-clefs :
+
+### Répartition genrée des candidat·es au premier tour par bloc politique :
+![Répartition genrée des candidat·es par bloc politique](/visualisations/Répartition%20genrée%20par%20bloc%20politique%20-%20candidat-es.png)
+
+### Répartition genrée des candidat·es arrivé·es en première position du premier tour par bloc politique :
+![Répartition genrée des candidat·es arrivé·es en première position du premier tour par bloc politique](/visualisations/Répartition%20genrée%20par%20bloc%20politique%20-%20première%20position.png)
+
 
 ## Statistiques :
 
