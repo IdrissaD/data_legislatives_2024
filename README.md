@@ -18,33 +18,8 @@ Résultats de 558 circonscriptions françaises, données manquantes pour les 11 
 <details>
   <summary><b>Nuances et leur regroupement par bloc politique</b></summary>
   
-    | Nuance définie par le Ministère de l'Intérieur et de l'Outre-mer | Bloc politique de rattachement défini subjectivement par mes soins |
-    | ---------------------------------------------------------------- | ------------------------------------------------------------------ |
-    | EXG                                                              | extrême-gauche                                                     |
-    | UG                                                               | gauche                                                             |
-    | FI                                                               | gauche                                                             |
-    | ECO                                                              | gauche                                                             |
-    | SOC                                                              | gauche                                                             |
-    | DVG                                                              | gauche                                                             |
-    | COM                                                              | gauche                                                             |
-    | VEC                                                              | gauche                                                             |
-    | RDG                                                              | gauche                                                             |
-    | REN                                                              | centre                                                             |
-    | ENS                                                              | centre                                                             |
-    | MDM                                                              | centre                                                             |
-    | HOR                                                              | centre                                                             |
-    | DVC                                                              | centre                                                             |
-    | UDI                                                              | centre                                                             |
-    | LR                                                               | droite                                                             |
-    | DVD                                                              | droite                                                             |
-    | DSV                                                              | extrême-droite                                                     |
-    | RN                                                               | extrême-droite                                                     |
-    | REC                                                              | extrême-droite                                                     |
-    | UXD                                                              | extrême-droite                                                     |
-    | EXD                                                              | extrême-droite                                                     |
-    | DIV                                                              | divers                                                             |
-    | REG                                                              | divers                                                             |
-    
+  <table><thead><tr><th>Nuance définie par le Ministère de l'Intérieur et de l'Outre-mer</th><th>Bloc politique de rattachement défini subjectivement par mes soins</th></tr></thead><tbody><tr><td>EXG</td><td>extrême-gauche</td></tr><tr><td>UG</td><td>gauche</td></tr><tr><td>FI</td><td>gauche</td></tr><tr><td>ECO</td><td>gauche</td></tr><tr><td>SOC</td><td>gauche</td></tr><tr><td>DVG</td><td>gauche</td></tr><tr><td>COM</td><td>gauche</td></tr><tr><td>VEC</td><td>gauche</td></tr><tr><td>RDG</td><td>gauche</td></tr><tr><td>REN</td><td>centre</td></tr><tr><td>ENS</td><td>centre</td></tr><tr><td>MDM</td><td>centre</td></tr><tr><td>HOR</td><td>centre</td></tr><tr><td>DVC</td><td>centre</td></tr><tr><td>UDI</td><td>centre</td></tr><tr><td>LR</td><td>droite</td></tr><tr><td>DVD</td><td>droite</td></tr><tr><td>DSV</td><td>extrême-droite</td></tr><tr><td>RN</td><td>extrême-droite</td></tr><tr><td>REC</td><td>extrême-droite</td></tr><tr><td>UXD</td><td>extrême-droite</td></tr>
+<tr><td>EXD</td><td>extrême-droite</td></tr><tr><td>DIV</td><td>divers</td></tr><tr><td>REG</td><td>divers</td></tr></tbody></table>  
 </details>
 
 ## [Données mises à disposition :](donnees_produites/)
@@ -59,19 +34,25 @@ Données également téléchargeables sur [data.gouv.fr](https://www.data.gouv.f
 
 Visualisations interactives disponibles sur Flourish : https://app.flourish.studio/@idrissad
 
-Images disponibles dans le dossier [visualisations](/visualisations)
+Images disponibles dans le dossier [visualisations](https://github.com/IdrissaD/legislatives_2024/tree/main/visualisations)
 
-## Chiffres-clefs :
+## Visualisations :
+
+### Répartition par genre et nuance politique des résultats provisoires du premier tour des élections législatives 2024 (5 premières nuances) :
+<div class="flourish-embed flourish-chart" data-src="visualisation/18623753"><script src="https://public.flourish.studio/resources/embed.js"></script></div>
+
+### Répartition par genre et nuance politique des résultats provisoires du premier tour des élections législatives 2024 (19 autres nuances) :
+<div class="flourish-embed flourish-chart" data-src="visualisation/18624119"><script src="https://public.flourish.studio/resources/embed.js"></script></div>
+
 
 ### Répartition genrée des candidat·es au premier tour par bloc politique :
-![Répartition genrée des candidat·es par bloc politique](/visualisations/Répartition%20genrée%20par%20bloc%20politique%20-%20candidat-es.png)
+![Répartition genrée des candidat·es par bloc politique](https://github.com/IdrissaD/legislatives_2024/visualisations/Répartition%20genrée%20par%20bloc%20politique%20-%20candidat-es.png)
 
 ### Répartition genrée des candidat·es arrivé·es en première position du premier tour par bloc politique :
-![Répartition genrée des candidat·es arrivé·es en première position du premier tour par bloc politique](/visualisations/Répartition%20genrée%20par%20bloc%20politique%20-%20première%20position.png)
+![Répartition genrée des candidat·es arrivé·es en première position du premier tour par bloc politique](https://github.com/IdrissaD/legislatives_2024/visualisations/Répartition%20genrée%20par%20bloc%20politique%20-%20première%20position.png)
 
 
 ## Statistiques :
 
-<div class="flourish-embed flourish-chart" data-src="visualisation/18623753"><script src="https://public.flourish.studio/resources/embed.js"></script></div>
 
 ## Cartographies :
