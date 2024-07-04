@@ -51,4 +51,4 @@ Données : [ODbL](https://opendatacommons.org/licenses/odbl/summary/)
 
 Images : [CC-BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
 
-(En gros vous réutilisez ce que vous voulez, pour usage commercial ou non, mais vous devez conserver les mêmes licenses pour les réutilisations. Cycle vertueux de la donnée ouverte, tout ça...
+(En gros vous réutilisez ce que vous voulez, pour usage commercial ou non, mais vous devez conserver les mêmes licenses pour les réutilisations. Cycle vertueux de la donnée ouverte, tout ça...)
