@@ -2,6 +2,8 @@
 
 Résultats des élections législatives françaises 2024 : données géolocalisées et réordonnées, analyses statistiques, cartographies.
 
+Cette page est conçue pour s'afficher correctement à ce lien : https://idrissad.github.io/legislatives_2024/
+
 ## Données :
 
 - [Résultats provisoires du 1er tour - Ministère de l'Intérieur et des Outre-Mer](https://www.data.gouv.fr/fr/datasets/elections-legislatives-des-30-juin-et-7-juillet-2024-resultats-provisoires-du-1er-tour/)
@@ -38,11 +40,11 @@ Images disponibles dans le dossier [visualisations](https://github.com/IdrissaD/
 
 ## Visualisations :
 
-### Répartition par genre et nuance politique des résultats provisoires du premier tour des élections législatives 2024 (5 premières nuances) :
 <div class="flourish-embed flourish-chart" data-src="visualisation/18623753"><script src="https://public.flourish.studio/resources/embed.js"></script></div>
 
-### Répartition par genre et nuance politique des résultats provisoires du premier tour des élections législatives 2024 (19 autres nuances) :
-<div class="flourish-embed flourish-chart" data-src="visualisation/18624119"><script src="https://public.flourish.studio/resources/embed.js"></script></div>
+<div class="flourish-embed flourish-chart" data-src="visualisation/18624186"><script src="https://public.flourish.studio/resources/embed.js"></script></div>
+
+
 
 
 ### Répartition genrée des candidat·es au premier tour par bloc politique :
