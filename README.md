@@ -46,7 +46,9 @@ Images disponibles dans le dossier [visualisations](https://github.com/IdrissaD/
 ## Licences :
 
 Code : [GNU General Public License v3.0](https://github.com/IdrissaD/legislatives_2024/blob/main/LICENSE)
+
 Données : [ODbL](https://opendatacommons.org/licenses/odbl/summary/)
+
 Images : [CC-BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
 
 (En gros vous réutilisez ce que vous voulez, pour usage commercial ou non, mais vous devez conserver les mêmes licenses pour les réutilisations. Cycle vertueux de la donnée ouverte, tout ça...
