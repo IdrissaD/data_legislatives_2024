@@ -88,10 +88,10 @@ SELECT
 id_circo AS circo_id,
 dep AS dep_code,
 "Numéro de panneau 1" AS numero_panneau,
-"Nuance candidat 1" AS nuance_candidat_e,
+"Nuance candidat 1" AS nuance,
 "Nom candidat 1" AS nom_candidat_e,
 "Prénom candidat 1" AS prenom_candidat_e,
-"Sexe candidat 1" AS sexe_candidat_e,
+"Sexe candidat 1" AS genre_candidat_e,
 "Voix 1" AS voix,
 "% Voix/inscrits 1" AS rapport_voix_inscrits,
 "% Voix/exprimés 1" AS rapport_voix_exprimes,
@@ -377,6 +377,10 @@ UPDATE resultats_par_candidat_e
 SET elu_e_bool = TRUE
 WHERE elu_e = 'élu';
 
+UPDATE resultats_par_candidat_e
+SET elu_e_bool = TRUE
+WHERE elu_e = 'élu';
+
 ALTER TABLE resultats_par_candidat_e
 DROP COLUMN elu_e;
 
@@ -404,7 +408,7 @@ ALTER TABLE resultats_par_candidat_e ADD COLUMN nuance_bloc varchar;
 
 UPDATE resultats_par_candidat_e rpc
 SET nuance_bloc = nuance.bloc
-FROM nuance WHERE nuance.nuance = rpc.nuance_candidat_e;
+FROM nuance WHERE nuance.nuance = rpc.nuance;
 
 -- Ajout d'une colonne "position"
 ALTER TABLE resultats_par_candidat_e ADD COLUMN "position" integer;
@@ -415,7 +419,7 @@ WITH a AS (
       circo_id,
       numero_panneau,
       voix,
-      nuance_candidat_e,
+      nuance,
       ROW_NUMBER () OVER (
       PARTITION BY circo_id
         ORDER BY 
@@ -454,10 +458,10 @@ AS SELECT
     circo.taux_votes_nuls_votes,
     circo.geom,
     rpce.numero_panneau,
-    rpce.nuance_candidat_e,
+    rpce.nuance,
     rpce.nom_candidat_e,
     rpce.prenom_candidat_e,
-    rpce.sexe_candidat_e,
+    rpce.genre_candidat_e,
     rpce.voix,
     rpce.rapport_voix_inscrits,
     rpce.rapport_voix_exprimes,
@@ -493,14 +497,14 @@ AS SELECT
     json_agg(json_build_object(
             'nom_candidat-e', nom_candidat_e,
             'prenom_candidat-e', prenom_candidat_e,
-            'sexe_candidate-e', sexe_candidat_e,
+            'genre_candidat-e', genre_candidat_e,
             'numero_panneau', numero_panneau,
-            'nuance_candidat-e', nuance_candidat_e,
-            'bloc_candidat-e', nuance_bloc,
+            'nuance', nuance,
+            'nuance_bloc', nuance_bloc,
             'position', "position",
             'voix', voix,
-            'rapport_voix_inscrits',rapport_voix_inscrits,
-            'rapport_voix_exprimes', rapport_voix_exprimes,
+            'rapport_voix/inscrits',rapport_voix_inscrits,
+            'rapport_voix/exprimes', rapport_voix_exprimes,
             'elu-e', elu_e
         )) AS resultats_candidat_es
 FROM circo JOIN resultats_par_candidat_e rpce ON circo.circo_id = rpce.circo_id AND circo.dep_code = rpce.dep_code
@@ -523,3 +527,9 @@ GROUP BY circo.circo_id,
     circo.taux_votes_nuls_inscriptions,
     circo.taux_votes_nuls_votes,
     circo.geom;
+
+ALTER TABLE resultats_par_circo
+ADD COLUMN resultats_candidat_es_string varchar;
+
+UPDATE resultats_par_circo
+SET resultats_candidat_es_string = resultats_candidat_es::varchar;
